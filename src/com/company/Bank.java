@@ -15,6 +15,7 @@ public class Bank {
     public void deleteAccount(String accountNumber){
         accounts.remove(findAccount(accountNumber));
     }
+
     public Account findAccount(String id){
         for (Account account : accounts) {
             if(account.getAccountNumber().equals(id)) {

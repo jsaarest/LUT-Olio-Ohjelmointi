@@ -12,15 +12,21 @@ public class Account {
     public void addMoney(int amount){
         accountBalance += amount;
     }
+
     public void withdrawMoney(int amount){
-        accountBalance -= amount;
+        if(amount < accountBalance){
+            accountBalance -= amount;
+        }
     }
+
     public int getAccountBalance(){
         return accountBalance;
     }
+
     public String getAccountNumber(){
         return accountNumber;
     }
+
     public void getAccountInformation(){
         System.out.println("Account number: " + accountNumber + " Amount of money: " + accountBalance);
     }
@@ -42,7 +48,15 @@ class CreditAccount extends Account {
     public int getCreditLimit(){
         return creditLimit;
     }
+
+    public void setCreditLimit(int limit){ creditLimit = limit; }
+
     public void getAccountInformation(){
         System.out.println("Account number: " + accountNumber + " Amount of money: " + accountBalance + " Credit limit: " + creditLimit);
+    }
+    public void withdrawMoney(int amount){
+        if(amount < accountBalance + creditLimit){
+            accountBalance -= amount;
+        }
     }
 }
